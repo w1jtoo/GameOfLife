@@ -96,6 +96,42 @@ public class EngineTests
     }
 
     [Test]
+    public void GetBack_OnlyOneIteration()
+    {
+        var cells = new List<Cell> {new(1, 0), new(1, 1), new(1, 2), new(8, 5), new(8, 6), 
+                                    new(8, 7), new(5, 5), new(5, 6), new(6, 6), new(6, 7)}; 
+        Engine.Add(cells);
+        
+        Engine.Update();
+        Engine.GetBack();
+        Assert.AreEqual(cells, Engine.GetCells());
+    }
+
+    [Test]
+    public void GetBack_SomeIterations()
+    {
+        var cells = new List<Cell> {new(1, 0), new(1, 1), new(1, 2), new(8, 5), new(8, 6), 
+                                    new(8, 7), new(5, 5), new(5, 6), new(6, 6), new(6, 7)}; 
+        Engine.Add(cells);
+        for(var iterations = 2; iterations < 30; iterations++)
+        {
+            for (var i = 0; i < iterations; i++) Engine.Update();
+            for (var i = 0; i < iterations; i++) Engine.GetBack();
+            Assert.AreEqual(cells, Engine.GetCells());
+        }
+    }
+
+    [Test]
+    public void GetBack_WhenZeroIterations()
+    {
+        var cells = new List<Cell> {new(1, 0), new(1, 1), new(1, 2), new(8, 5), new(8, 6), 
+                                    new(8, 7), new(5, 5), new(5, 6), new(6, 6), new(6, 7)}; 
+        Engine.Add(cells);
+        Engine.GetBack();
+        Assert.AreEqual(cells, Engine.GetCells());
+    }
+
+    [Test]
     public void GetNeighbours_ShouldReturnAllNearlyCells()
     {
         var neighbours = (new Cell(0, 0)).GetNeighbourCells();

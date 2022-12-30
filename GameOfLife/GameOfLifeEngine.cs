@@ -4,8 +4,14 @@ public class GameOfLifeEngine
 {
     private readonly HashSet<Cell> Cells = new();
 
+    private List<HashSet<Cell>> CellIterations = new List<HashSet<Cell>>();
+
     public void Update()
     {
+        var oldCells = new HashSet<Cell>();
+        foreach (var cell in Cells) oldCells.Add(cell);
+        CellIterations.Add(oldCells);
+
         var cellsForDeleting = new List<Cell>();
         var newCells = new List<Cell>();
 
@@ -21,6 +27,15 @@ public class GameOfLifeEngine
 
         foreach (var cellForDeleting in cellsForDeleting) Remove(cellForDeleting);
         Add(newCells);
+    }
+
+    public void GetBack()
+    {
+        if (CellIterations.Count() == 0) return;
+        var lastEngine = CellIterations[CellIterations.Count()-1];
+        CellIterations.RemoveAt(CellIterations.Count()-1);
+        Cells.Clear();
+        Add(lastEngine.ToList());
     }
 
     public int GetCountOfAliveNeighbours(Cell cell)
