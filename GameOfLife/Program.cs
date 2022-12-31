@@ -9,7 +9,12 @@ engine.Add(cells);
 ConsoleKeyInfo key;
 
 while (true)
-{
+{  
+    Console.Clear();
+    var iterations = engine.GetCountOfIterations();
+    Console.Write("After "); //вместо true/false
+    Console.Write(iterations); //будем взвращать кол-во итераций, после которых
+    Console.WriteLine(" iteration(s):"); //поле преобрело текущий вид
     printEngine(engine);
     key = Console.ReadKey();
     if (key.Key == ConsoleKey.RightArrow) engine.Update();
@@ -20,8 +25,7 @@ static void printEngine(GameOfLifeEngine engine)
 {
     var horizontalSize = 20;
     var verticalSize = 10;  
-    var horizontalBorder = new string(Enumerable.Repeat('#', horizontalSize + 2).ToArray());  
-    Console.Clear();
+    var horizontalBorder = new string(Enumerable.Repeat('#', horizontalSize + 2).ToArray());
     Console.WriteLine(horizontalBorder);
     for (var x = 0; x < verticalSize; x++)
     {
