@@ -3,9 +3,21 @@
 public class GameOfLifeEngine
 {
     private readonly HashSet<Cell> Cells = new();
+    private readonly List<int> HistoryConfigurationHashes = new();
+    public bool IsGameEnded { get; private set; }
 
+    public GameOfLifeEngine()
+    {
+        IsGameEnded = false;
+    }
     public void Update()
     {
+        var hashCode = GetGameHashCode();
+        if (HistoryConfigurationHashes.Contains(hashCode))
+            IsGameEnded = true;
+        else
+            HistoryConfigurationHashes.Add(hashCode);
+
         var cellsForDeleting = new List<Cell>();
         var newCells = new List<Cell>();
 
@@ -51,5 +63,16 @@ public class GameOfLifeEngine
     public void Remove(Cell cell)
     {
         Cells.Remove(cell);
+    }
+    
+    public int GetGameHashCode()
+    {
+        var hashCode = Cells.Count;
+        foreach (Cell cell in Cells)
+        {
+            hashCode = unchecked(hashCode * 314159 + cell.GetHashCode());
+        }
+
+        return hashCode;
     }
 }

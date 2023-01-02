@@ -19,7 +19,7 @@ engine.Add(new List<Cell> { new(6, 7) });
 
 const int horizontalSize = 20;
 const int verticalSize = 10;
-while (true)
+while (!engine.IsGameEnded)
 {
     var horizontalBorder = new string(Enumerable.Repeat('#', horizontalSize + 2).ToArray());
     Console.WriteLine(horizontalBorder);
