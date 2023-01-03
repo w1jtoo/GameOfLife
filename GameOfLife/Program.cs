@@ -1,4 +1,8 @@
-﻿using GameOfLife;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
+using GameOfLife;
 
 var engine = new GameOfLifeEngine();
 
