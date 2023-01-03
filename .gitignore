@@ -1,3 +1,12 @@
+*.swp
+*.*~
+project.lock.json
+.DS_Store
+*.pyc
+nupkg/
+
+# Visual Studio Code
+.vscode
 
 # Rider
 .idea
@@ -23,3 +32,6 @@ bld/
 msbuild.log
 msbuild.err
 msbuild.wrn
+
+# Visual Studio 2015
+.vs/
