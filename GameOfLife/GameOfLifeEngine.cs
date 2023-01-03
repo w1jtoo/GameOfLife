@@ -8,13 +8,13 @@ public class GameOfLifeEngine
 
     private Stack<ImmutableHashSet<Cell>> CellIterations = new Stack<ImmutableHashSet<Cell>>();
 
-    public bool JourneyModeFlag;
+    public bool JourneyModeFlag = true;
 
     public void Update()
     {
         var oldCells = new HashSet<Cell>();
         foreach (var cell in Cells) oldCells.Add(cell);
-        CellIterations.Push(oldCells.ToImmutableHashSet());
+        if (JourneyModeFlag) CellIterations.Push(oldCells.ToImmutableHashSet());
 
         var cellsForDeleting = new List<Cell>();
         var newCells = new List<Cell>();
