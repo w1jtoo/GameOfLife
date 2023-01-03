@@ -71,7 +71,7 @@ public class GameOfLifeEngine
         return Cells.ToList();
     }
 
-    public void Remove(Cell cell)
+    private void Remove(Cell cell)
     {
         Cells.Remove(cell);
     }
