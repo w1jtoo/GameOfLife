@@ -2,25 +2,47 @@
 
 var engine = new GameOfLifeEngine();
 
-engine.Add(new List<Cell> { new(1, 0) });
-engine.Add(new List<Cell> { new(1, 1) });
-engine.Add(new List<Cell> { new(1, 2) });
+var cells = new List<Cell> {new(1, 0), new(1, 1), new(1, 2), new(8, 5), new(8, 6), 
+                            new(8, 7), new(5, 5), new(5, 6), new(6, 6), new(6, 7)}; 
+engine.Add(cells);
 
-engine.Add(new List<Cell> { new(8, 5) });
-engine.Add(new List<Cell> { new(8, 6) });
-engine.Add(new List<Cell> { new(8, 7) });
+ConsoleKeyInfo key;
 
-engine.Add(new List<Cell> { new(5, 5) });
-engine.Add(new List<Cell> { new(5, 6) });
-engine.Add(new List<Cell> { new(5, 6) });
-engine.Add(new List<Cell> { new(6, 6) });
-engine.Add(new List<Cell> { new(6, 7) });
+Console.WriteLine("Hello!");
+Console.WriteLine("Welcome to \"Game Of Life\"!\n");
+Console.WriteLine("Press 'Enter' if you want to look at the game journey step-by-step");
+Console.WriteLine("Press any key if you just want to look at the game");
+key = Console.ReadKey();
+engine.JourneyModeFlag = (key.Key == ConsoleKey.Enter);
 
-
-const int horizontalSize = 20;
-const int verticalSize = 10;
 while (true)
+{  
+    Console.Clear();
+    if (engine.JourneyModeFlag)
+    {
+        var iterations = engine.GetCountOfIterations();
+        Console.Write("After ");
+        Console.Write(iterations);
+        Console.WriteLine(" iteration(s):");
+        printEngine(engine);
+        Console.WriteLine("Press 'Right' to go to the next iteration");
+        Console.WriteLine("Press 'Left' to go to the previous iteration");
+        key = Console.ReadKey();
+        if (key.Key == ConsoleKey.RightArrow) engine.Update();
+        else if (key.Key == ConsoleKey.LeftArrow) engine.GetBack();
+    }
+    else
+    {
+        printEngine(engine);
+        engine.Update();
+        Thread.Sleep(500);
+    }
+}
+
+static void printEngine(GameOfLifeEngine engine)
 {
+    var horizontalSize = 20;
+    var verticalSize = 10;  
     var horizontalBorder = new string(Enumerable.Repeat('#', horizontalSize + 2).ToArray());
     Console.WriteLine(horizontalBorder);
     for (var x = 0; x < verticalSize; x++)
@@ -30,9 +52,5 @@ while (true)
         Console.Write('#');
         Console.WriteLine();
     }
-
-    Console.WriteLine(horizontalBorder);
-    engine.Update();
-    Thread.Sleep(800);
-    Console.Clear();
+    Console.WriteLine(horizontalBorder);    
 }
