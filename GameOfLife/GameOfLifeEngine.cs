@@ -61,6 +61,11 @@ public class GameOfLifeEngine
         foreach (var cell in cells) Cells.Add(cell);
     }
 
+    public void Add(params Cell[] cells)
+    {
+        foreach (var cell in cells) Cells.Add(cell);
+    }
+
     public bool Contains(Cell cell)
     {
         return Cells.Contains(cell);
