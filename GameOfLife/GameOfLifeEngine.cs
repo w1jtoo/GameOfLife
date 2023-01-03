@@ -4,18 +4,18 @@ public class GameOfLifeEngine
 {
     private readonly HashSet<Cell> Cells = new();
 
-    public void Update()
+    public void Update(int mapWidth, int mapHeight)
     {
         var cellsForDeleting = new List<Cell>();
         var newCells = new List<Cell>();
 
         foreach (var cell in Cells)
         {
-            if (GetCountOfAliveNeighbours(cell) is < 2 or > 3)
+            if (GetCountOfAliveNeighbours(cell, mapWidth, mapHeight) is < 2 or > 3)
                 cellsForDeleting.Add(cell);
 
-            foreach (var neighbour in cell.GetNeighbourCells())
-                if (GetCountOfAliveNeighbours(neighbour) == 3)
+            foreach (var neighbour in cell.GetNeighbourCells(mapWidth, mapHeight))
+                if (GetCountOfAliveNeighbours(neighbour, mapWidth, mapHeight) == 3)
                     newCells.Add(neighbour);
         }
 
@@ -23,10 +23,10 @@ public class GameOfLifeEngine
         Add(newCells);
     }
 
-    public int GetCountOfAliveNeighbours(Cell cell)
+    public int GetCountOfAliveNeighbours(Cell cell, int mapWidth, int mapHeight)
     {
         var count = 0;
-        foreach (var neighbour in cell.GetNeighbourCells())
+        foreach (var neighbour in cell.GetNeighbourCells(mapWidth, mapHeight))
             if (Contains(neighbour))
                 count++;
 
