@@ -8,6 +8,8 @@ public class GameOfLifeEngine
 
     private Stack<ImmutableHashSet<Cell>> CellIterations = new Stack<ImmutableHashSet<Cell>>();
 
+    public bool JourneyModeFlag;
+
     public void Update()
     {
         var oldCells = new HashSet<Cell>();

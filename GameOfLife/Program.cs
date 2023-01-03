@@ -8,17 +8,35 @@ engine.Add(cells);
 
 ConsoleKeyInfo key;
 
+Console.WriteLine("Hello!");
+Console.WriteLine("Welcome to \"Game Of Life\"!\n");
+Console.WriteLine("Press 'Enter' if you want to look at the game journey step-by-step");
+Console.WriteLine("Press any key if you just want to look at the game");
+key = Console.ReadKey();
+engine.JourneyModeFlag = (key.Key == ConsoleKey.Enter);
+
 while (true)
 {  
     Console.Clear();
-    var iterations = engine.GetCountOfIterations();
-    Console.Write("After "); //вместо true/false
-    Console.Write(iterations); //будем взвращать кол-во итераций, после которых
-    Console.WriteLine(" iteration(s):"); //поле преобрело текущий вид
-    printEngine(engine);
-    key = Console.ReadKey();
-    if (key.Key == ConsoleKey.RightArrow) engine.Update();
-    else if (key.Key == ConsoleKey.LeftArrow) engine.GetBack();
+    if (engine.JourneyModeFlag)
+    {
+        var iterations = engine.GetCountOfIterations();
+        Console.Write("After ");
+        Console.Write(iterations);
+        Console.WriteLine(" iteration(s):");
+        printEngine(engine);
+        Console.WriteLine("Press 'Right' to go to the next iteration");
+        Console.WriteLine("Press 'Left' to go to the previous iteration");
+        key = Console.ReadKey();
+        if (key.Key == ConsoleKey.RightArrow) engine.Update();
+        else if (key.Key == ConsoleKey.LeftArrow) engine.GetBack();
+    }
+    else
+    {
+        printEngine(engine);
+        engine.Update();
+        Thread.Sleep(500);
+    }
 }
 
 static void printEngine(GameOfLifeEngine engine)
