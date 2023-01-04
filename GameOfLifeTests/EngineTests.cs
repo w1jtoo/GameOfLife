@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Drawing;
 using FluentAssertions;
 using GameOfLife;
 
@@ -111,5 +112,23 @@ public class EngineTests
         neighbours.Should().Contain(new Cell(1, -1));
         neighbours.Should().Contain(new Cell(1, 0));
         neighbours.Should().Contain(new Cell(1, 1));
+    }
+
+    [TestCase(0, 0, 0)]
+    [TestCase(10, 10, 10)]
+    [TestCase(50, 50, 50)]
+    [TestCase(100, 100, 100)]
+    [TestCase(200, 200, 200)]
+    public void EqualCell_ShouldCompareUsingXAndYAndColor(int r, int g, int b)
+    {
+        Engine.Add(new List<Cell> { new(0, 0, r, g, b) });
+        Engine.Contains(new Cell(0, 0, r, g, b)).Should().Be(true);
+    }
+
+    [Test]
+    public void CheckCell_DefaultColor()
+    {
+        Engine.Add(new List<Cell> { new (0,0)});
+        Engine.Contains(new Cell(0, 0, Color.White)).Should().Be(true);
     }
 }
