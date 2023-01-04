@@ -66,6 +66,11 @@ public class GameOfLifeEngine
         foreach (var cell in cells) Cells.Add(cell);
     }
 
+    public void Add(GroupCellsBase typeGroup)
+    {
+        typeGroup.Create();
+    }
+
     public bool Contains(Cell cell)
     {
         return Cells.Contains(cell);
