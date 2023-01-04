@@ -28,12 +28,12 @@ public class Cell
         var neighbours = new List<Cell>();
 
         for (var xd = -1; xd <= 1; xd++)
-        for (var yd = -1; yd <= 1; yd++)
-        {
-            if (xd == 0 && yd == 0)
-                continue;
-            neighbours.Add(new Cell(X + xd, Y + yd));
-        }
+            for (var yd = -1; yd <= 1; yd++)
+            {
+                if (xd == 0 && yd == 0)
+                    continue;
+                neighbours.Add(new Cell(X + xd, Y + yd));
+            }
 
         return neighbours;
     }
