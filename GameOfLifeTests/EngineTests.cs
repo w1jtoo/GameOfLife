@@ -112,3 +112,17 @@ public class EngineTests
         neighbours.Should().Contain(new Cell(1, 1));
     }
 }
+
+public class PeriodiñEngine
+{
+    private static PeriodiñEngine Engine = new PeriodiñEngine(3, 3);
+    [Test]
+    public void GetNeighbours_ShouldReturnBoarderNearlyCells()
+    {
+        var neighbours = PeriodiñEngine.GetNeighbours(new Cell(2, 2));
+
+        neighbours.Should().Contain(new Cell(2, 0));
+        neighbours.Should().Contain(new Cell(0, 2));
+        neighbours.Should().Contain(new Cell(0, 0));
+    }
+}
