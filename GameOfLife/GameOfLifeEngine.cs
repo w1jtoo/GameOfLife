@@ -61,8 +61,8 @@ public class GameOfLifeEngine
 
 public class PeriodiсEngine : GameOfLifeEngine
 {
-    public int MapWidth { get; set; }
-    public int MapHeight { get; set; }
+    public int MapWidth { get; private set; }
+    public int MapHeight { get; private set; }
     public PeriodiсEngine(int mapWidth, int mapHeight)
     {
         MapWidth = mapWidth;
