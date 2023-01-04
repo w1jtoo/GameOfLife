@@ -112,6 +112,7 @@ public class EngineTests
         neighbours.Should().Contain(new Cell(1, 1));
     }
 
+    //Òåñòû äëÿ PeriodiñEngine
     [TestCase(3, 3)]
     public void PeriodicalGetNeighbours_ShouldContainNeighboursOfBoarderSells(int mapWidth, int mapHeight)
     {
