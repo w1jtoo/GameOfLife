@@ -1,14 +1,36 @@
-﻿namespace GameOfLife;
+﻿using System;
+using System.Collections.Generic;
+using System.Drawing;
+
+namespace GameOfLife;
 
 public class Cell
 {
     public readonly int X;
     public readonly int Y;
+    public readonly Color Color;
+
+    private readonly Color _defaultColor = Color.White;
 
     public Cell(int x, int y)
     {
         X = x;
         Y = y;
+        Color = _defaultColor;
+    }
+
+    public Cell(int x, int y, Color color)
+    {
+        X = x;
+        Y = y;
+        Color = color;
+    }
+
+    public Cell(int x, int y, int r, int g, int b)
+    {
+        X = x;
+        Y = y;
+        Color = Color.FromArgb(red: r, green: g, blue: b);
     }
 
     public override bool Equals(object? obj)
