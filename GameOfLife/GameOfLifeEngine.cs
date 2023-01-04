@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+using System.Collections.Immutable;
 
 namespace GameOfLife;
 
@@ -7,8 +6,16 @@ public class GameOfLifeEngine
 {
     private readonly HashSet<Cell> Cells = new();
 
+    private Stack<ImmutableHashSet<Cell>> CellIterations = new Stack<ImmutableHashSet<Cell>>();
+
+    public bool JourneyModeFlag = true;
+
     public void Update()
     {
+        var oldCells = new HashSet<Cell>();
+        foreach (var cell in Cells) oldCells.Add(cell);
+        if (JourneyModeFlag) CellIterations.Push(oldCells.ToImmutableHashSet());
+
         var cellsForDeleting = new List<Cell>();
         var newCells = new List<Cell>();
 
@@ -26,6 +33,14 @@ public class GameOfLifeEngine
         Add(newCells);
     }
 
+    public void GetBack()
+    {
+        if (CellIterations.Count() == 0) return;
+        var lastEngine = CellIterations.Pop();
+        Cells.Clear();
+        Add(lastEngine.ToList());
+    }
+
     public int GetCountOfAliveNeighbours(Cell cell)
     {
         var count = 0;
@@ -36,7 +51,17 @@ public class GameOfLifeEngine
         return count;
     }
 
+    public int GetCountOfIterations()
+    {
+        return CellIterations.Count();
+    }
+
     public void Add(List<Cell> cells)
+    {
+        foreach (var cell in cells) Cells.Add(cell);
+    }
+
+    public void Add(params Cell[] cells)
     {
         foreach (var cell in cells) Cells.Add(cell);
     }
@@ -51,7 +76,7 @@ public class GameOfLifeEngine
         return Cells.ToList();
     }
 
-    public void Remove(Cell cell)
+    private void Remove(Cell cell)
     {
         Cells.Remove(cell);
     }
