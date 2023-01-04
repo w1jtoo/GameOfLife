@@ -112,10 +112,12 @@ public class EngineTests
         neighbours.Should().Contain(new Cell(1, 1));
     }
 
-    [TestCase(2, 2, 3, 3)]
-    public void PeriodicalGetNeighbours_ShouldContainNeighboursOfBoarderSells(int x, int y, int mapWidth, int mapHeight)
+    [TestCase(3, 3)]
+    public void PeriodicalGetNeighbours_ShouldContainNeighboursOfBoarderSells(int mapWidth, int mapHeight)
     {
         var engine = new PeriodiñEngine(mapWidth,mapHeight);
+        var x = mapWidth - 1;
+        var y = mapHeight - 1;
         var neighbours = engine.GetNeighbours(new Cell(x, y));
 
         neighbours.Should().Contain(new Cell(x, 0));
