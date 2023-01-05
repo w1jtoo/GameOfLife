@@ -5,6 +5,7 @@ namespace GameOfLifeTests;
 public class PeriodicEngineTests
 {
     [TestCase(3, 3)]
+    [TestCase(4, 4)]
     [TestCase(5, 3)]
     [TestCase(4, 6)]
     public void PeriodicalGetNeighbours_ShouldContainNeighboursOfRightBottomBoarderSells(int mapWidth, int mapHeight)
