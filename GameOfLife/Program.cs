@@ -23,7 +23,7 @@ class Program
         key = Console.ReadKey();
         engine.JourneyModeFlag = (key.Key == ConsoleKey.Enter);
 
-        while (true)
+        while (!engine.IsGameEnded)
         {
             Console.Clear();
             if (engine.JourneyModeFlag)

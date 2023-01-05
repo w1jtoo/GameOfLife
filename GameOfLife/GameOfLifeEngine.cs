@@ -5,13 +5,19 @@ namespace GameOfLife;
 public class GameOfLifeEngine
 {
     private readonly HashSet<Cell> Cells = new();
-
-    private Stack<ImmutableHashSet<Cell>> CellIterations = new Stack<ImmutableHashSet<Cell>>();
-
+    private readonly List<int> HistoryConfigurationHashes = new();
+    private Stack<ImmutableHashSet<Cell>> CellIterations = new();
     public bool JourneyModeFlag = true;
+    public bool IsGameEnded { get; private set; }
 
     public void Update()
     {
+        var hashCode = GetGameHashCode();
+        if (HistoryConfigurationHashes.Contains(hashCode))
+            IsGameEnded = true;
+        else
+            HistoryConfigurationHashes.Add(hashCode);
+
         var oldCells = new HashSet<Cell>();
         foreach (var cell in Cells) oldCells.Add(cell);
         if (JourneyModeFlag) CellIterations.Push(oldCells.ToImmutableHashSet());
@@ -35,7 +41,7 @@ public class GameOfLifeEngine
 
     public void GetBack()
     {
-        if (CellIterations.Count() == 0) return;
+        if (!CellIterations.Any()) return;
         var lastEngine = CellIterations.Pop();
         Cells.Clear();
         Add(lastEngine.ToList());
@@ -53,7 +59,7 @@ public class GameOfLifeEngine
 
     public int GetCountOfIterations()
     {
-        return CellIterations.Count();
+        return CellIterations.Count;
     }
 
     public void Add(List<Cell> cells)
@@ -79,5 +85,15 @@ public class GameOfLifeEngine
     private void Remove(Cell cell)
     {
         Cells.Remove(cell);
+    }
+    
+    public int GetGameHashCode()
+    {
+        var hashCode = Cells.Count;
+        
+        foreach (var cell in Cells)
+            hashCode = unchecked(hashCode * 314159 + cell.GetHashCode());
+
+        return hashCode;
     }
 }
