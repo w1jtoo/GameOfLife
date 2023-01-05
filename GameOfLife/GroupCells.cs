@@ -24,10 +24,6 @@
 
     public class GroupSquare : GroupCellsBase
     {
-        public int XStart { get; set; }
-        public int YStart { get; set; }
-        public GameOfLifeEngine Engine { get; set; }
-
         public GroupSquare(GameOfLifeEngine engine, int xStart, int yStart):
             base(engine, xStart, yStart) {}
 
@@ -42,10 +38,6 @@
 
     public class GroupLoaf : GroupCellsBase
     {
-        public int XStart { get; set; }
-        public int YStart { get; set; }
-        public GameOfLifeEngine Engine { get; set; }
-
         public GroupLoaf(GameOfLifeEngine engine, int xStart, int yStart):
             base(engine, xStart, yStart) {}
 
@@ -63,10 +55,6 @@
 
     public class GroupBeeHive : GroupCellsBase
     {
-        public int XStart { get; set; }
-        public int YStart { get; set; }
-        public GameOfLifeEngine Engine { get; set; }
-
         public GroupBeeHive(GameOfLifeEngine engine, int xStart, int yStart):
             base(engine, xStart, yStart) {}
 
@@ -82,11 +70,7 @@
     }
 
     public class GroupBoat : GroupCellsBase
-    {
-        public int XStart { get; set; }
-        public int YStart { get; set; }
-        public GameOfLifeEngine Engine { get; set; }
-
+    { 
         public GroupBoat(GameOfLifeEngine engine, int xStart, int yStart):
             base(engine, xStart, yStart) {}
 
@@ -102,10 +86,6 @@
 
     public class GroupTub : GroupCellsBase
     {
-        public int XStart { get; set; }
-        public int YStart { get; set; }
-        public GameOfLifeEngine Engine { get; set; }
-
         public GroupTub(GameOfLifeEngine engine, int xStart, int yStart):
             base(engine, xStart, yStart) {}
 
@@ -120,10 +100,6 @@
 
     public class GroupBlinker : GroupCellsBase
     {
-        public int XStart { get; set; }
-        public int YStart { get; set; }
-        public GameOfLifeEngine Engine { get; set; }
-
         public GroupBlinker(GameOfLifeEngine engine, int xStart, int yStart):
             base(engine, xStart, yStart) {}
 
@@ -137,10 +113,6 @@
 
     public class GroupToad : GroupCellsBase
     {
-        public int XStart { get; set; }
-        public int YStart { get; set; }
-        public GameOfLifeEngine Engine { get; set; }
-
         public GroupToad(GameOfLifeEngine engine, int xStart, int yStart):
             base(engine, xStart, yStart) {}
 
@@ -157,10 +129,6 @@
 
     public class GroupBeacon : GroupCellsBase
     {
-        public int XStart { get; set; }
-        public int YStart { get; set; }
-        public GameOfLifeEngine Engine { get; set; }
-
         public GroupBeacon(GameOfLifeEngine engine, int xStart, int yStart):
             base(engine, xStart, yStart) {}
 
@@ -179,10 +147,6 @@
 
     public class GroupPulsar : GroupCellsBase
     {
-        public int XStart { get; set; }
-        public int YStart { get; set; }
-        public GameOfLifeEngine Engine { get; set; }
-
         public GroupPulsar(GameOfLifeEngine engine, int xStart, int yStart):
             base(engine, xStart, yStart) {}
 
@@ -209,10 +173,6 @@
 
     public class GroupSurpriseHa : GroupCellsBase
     {
-        public int XStart { get; set; }
-        public int YStart { get; set; }
-        public GameOfLifeEngine Engine { get; set; }
-
         public GroupSurpriseHa(GameOfLifeEngine engine, int xStart, int yStart):
             base(engine, xStart, yStart) {}
 
@@ -229,10 +189,6 @@
 
     public class GroupPentaDecathlon : GroupCellsBase
     {
-        public int XStart { get; set; }
-        public int YStart { get; set; }
-        public GameOfLifeEngine Engine { get; set; }
-
         public GroupPentaDecathlon(GameOfLifeEngine engine, int xStart, int yStart):
             base(engine, xStart, yStart) {}
 
@@ -251,10 +207,6 @@
 
     public class GroupSurpriseHaHa : GroupCellsBase
     {
-        public int XStart { get; set; }
-        public int YStart { get; set; }
-        public GameOfLifeEngine Engine { get; set; }
-
         public GroupSurpriseHaHa(GameOfLifeEngine engine, int xStart, int yStart):
             base(engine, xStart, yStart) {}
 
@@ -271,10 +223,6 @@
 
     public class GroupGlider : GroupCellsBase
     {
-        public int XStart { get; set; }
-        public int YStart { get; set; }
-        public GameOfLifeEngine Engine { get; set; }
-
         public GroupGlider(GameOfLifeEngine engine, int xStart, int yStart):
             base(engine, xStart, yStart) {}
 
@@ -290,10 +238,6 @@
 
     public class GroupLightWeightSpaceship : GroupCellsBase
     {
-        public int XStart { get; set; }
-        public int YStart { get; set; }
-        public GameOfLifeEngine Engine { get; set; }
-
         public GroupLightWeightSpaceship(GameOfLifeEngine engine, int xStart, int yStart):
             base(engine, xStart, yStart) {}
 
@@ -307,10 +251,6 @@
 
     public class GroupMiddleWeightSpaceship : GroupCellsBase
     {
-        public int XStart { get; set; }
-        public int YStart { get; set; }
-        public GameOfLifeEngine Engine { get; set; }
-
         public GroupMiddleWeightSpaceship(GameOfLifeEngine engine, int xStart, int yStart):
             base(engine, xStart, yStart) {}
 
@@ -324,10 +264,6 @@
 
     public class GroupHeavyWeightSpaceship : GroupCellsBase
     {
-        public int XStart { get; set; }
-        public int YStart { get; set; }
-        public GameOfLifeEngine Engine { get; set; }
-
         public GroupHeavyWeightSpaceship(GameOfLifeEngine engine, int xStart, int yStart):
             base(engine, xStart, yStart) {}
 
