@@ -1,3 +1,4 @@
+using FluentAssertions;
 using GameOfLife;
 
 namespace GameOfLifeTests;
@@ -10,7 +11,7 @@ public class GameEndTests
         var engine = new GameOfLifeEngine();
         for (var i = 0; i < 2; i++)
             engine.Update();
-        Assert.AreEqual(true, engine.IsGameEnded);
+        engine.IsGameEnded.Should().BeTrue();
     }
     
     [Test]
@@ -20,7 +21,7 @@ public class GameEndTests
         engine.Add(new List<Cell>() {new Cell(0, 0)});
         for (var i = 0; i < 3; i++)
             engine.Update();
-        Assert.AreEqual(true, engine.IsGameEnded);
+        engine.IsGameEnded.Should().BeTrue();
     }
     
     [Test]
@@ -36,7 +37,7 @@ public class GameEndTests
         });
         for (var i = 0; i < 3; i++)
             engine.Update();
-        Assert.AreEqual(true, engine.IsGameEnded);
+        engine.IsGameEnded.Should().BeTrue();
     }
     
     [Test]
@@ -51,7 +52,7 @@ public class GameEndTests
         });
         for (var i = 0; i < 4; i++)
             engine.Update();
-        Assert.AreEqual(true, engine.IsGameEnded);
+        engine.IsGameEnded.Should().BeTrue();
     }
     
     [Test]
@@ -67,9 +68,7 @@ public class GameEndTests
             new Cell(2, 1)
         });
         for (var i = 0; i < 100; i++)
-        {
             engine.Update();
-        }
-        Assert.AreEqual(false, engine.IsGameEnded);
+        engine.IsGameEnded.Should().BeFalse();
     }
 }

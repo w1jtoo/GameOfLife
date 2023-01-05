@@ -9,12 +9,7 @@ public class GameOfLifeEngine
     private Stack<ImmutableHashSet<Cell>> CellIterations = new();
     public bool JourneyModeFlag = true;
     public bool IsGameEnded { get; private set; }
-    
-    public GameOfLifeEngine()
-    {
-        IsGameEnded = false;
-    }
-    
+
     public void Update()
     {
         var hashCode = GetGameHashCode();
@@ -46,7 +41,7 @@ public class GameOfLifeEngine
 
     public void GetBack()
     {
-        if (CellIterations.Count() == 0) return;
+        if (!CellIterations.Any()) return;
         var lastEngine = CellIterations.Pop();
         Cells.Clear();
         Add(lastEngine.ToList());
@@ -64,7 +59,7 @@ public class GameOfLifeEngine
 
     public int GetCountOfIterations()
     {
-        return CellIterations.Count();
+        return CellIterations.Count;
     }
 
     public void Add(List<Cell> cells)
@@ -95,10 +90,9 @@ public class GameOfLifeEngine
     public int GetGameHashCode()
     {
         var hashCode = Cells.Count;
-        foreach (Cell cell in Cells)
-        {
+        
+        foreach (var cell in Cells)
             hashCode = unchecked(hashCode * 314159 + cell.GetHashCode());
-        }
 
         return hashCode;
     }
