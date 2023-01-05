@@ -33,7 +33,7 @@ public class GameOfLifeEngine
         return count;
     }
 
-    public virtual List<Cell> GetNeighbours(Cell cell)
+    protected virtual List<Cell> GetNeighbours(Cell cell)
     {
         return cell.GetNeighbourCells();
     }
@@ -59,27 +59,27 @@ public class GameOfLifeEngine
     }
 }
 
-public class PeriodiсEngine : GameOfLifeEngine
+public class PeriodicEngine : GameOfLifeEngine
 {
     public int MapWidth { get; private set; }
     public int MapHeight { get; private set; }
-    public PeriodiсEngine(int mapWidth, int mapHeight)
+    public PeriodicEngine(int mapWidth, int mapHeight)
     {
         MapWidth = mapWidth;
         MapHeight = mapHeight;
     }
-    public override List<Cell> GetNeighbours(Cell cell)
+    protected override List<Cell> GetNeighbours(Cell cell)
     {
         var neighbours = new List<Cell>();
-        var X = cell.X;
-        var Y = cell.Y;
+        var x = cell.X;
+        var y = cell.Y;
         for (var xd = -1; xd <= 1; xd++)
         for (var yd = -1; yd <= 1; yd++)
         {
             if (xd == 0 && yd == 0)
                     continue;
-            int cellX = X + xd;
-            int cellY = Y + yd;
+            var cellX = x + xd;
+            var cellY = y + yd;
             if(cellX >= MapWidth)
                 cellX = 0;
             if (cellY >= MapHeight)

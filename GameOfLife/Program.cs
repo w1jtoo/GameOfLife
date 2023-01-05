@@ -1,23 +1,15 @@
 ﻿using GameOfLife;
 
-var engine = new GameOfLifeEngine();
+var engine = new PeriodicEngine(10,10);
 
-engine.Add(new List<Cell> { new(1, 0) });
-engine.Add(new List<Cell> { new(1, 1) });
-engine.Add(new List<Cell> { new(1, 2) });
-
-engine.Add(new List<Cell> { new(8, 5) });
-engine.Add(new List<Cell> { new(8, 6) });
-engine.Add(new List<Cell> { new(8, 7) });
-
-engine.Add(new List<Cell> { new(5, 5) });
-engine.Add(new List<Cell> { new(5, 6) });
-engine.Add(new List<Cell> { new(5, 6) });
-engine.Add(new List<Cell> { new(6, 6) });
-engine.Add(new List<Cell> { new(6, 7) });
+engine.Add(new List<Cell> { new(5, 3) });
+engine.Add(new List<Cell> { new(4, 3) });
+engine.Add(new List<Cell> { new(4, 4) });
+engine.Add(new List<Cell> { new(3, 4) });
+engine.Add(new List<Cell> { new(3, 2) });
 
 
-const int horizontalSize = 20;
+const int horizontalSize = 10;
 const int verticalSize = 10;
 while (true)
 {

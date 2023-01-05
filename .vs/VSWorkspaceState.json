@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\GameOfLifeTests"
   ],
-  "SelectedNode": "\\C:\\Users\\sulta\\OneDrive\\Рабочий стол\\Op\\GameOfLife",
+  "SelectedNode": "\\GameOfLifeTests\\EngineTests.cs",
   "PreviewInSolutionExplorer": false
 }
